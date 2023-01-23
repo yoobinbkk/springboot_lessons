@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=bBoardJsp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1671590873335"/>
+    <typeInfo handle="=cBoardThymeleaf/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.service{MemberService.java[MemberService" modifiers="513" timestamp="1671680173233"/>
+    <typeInfo handle="=dBoardFileupload/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.service{FileService.java[FileService" modifiers="513" timestamp="1671757231366"/>
+</typeInfoHistroy>

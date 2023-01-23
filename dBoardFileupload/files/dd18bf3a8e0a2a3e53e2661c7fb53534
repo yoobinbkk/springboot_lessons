@@ -1,0 +1,46 @@
+// 글등록 ************
+@RequestMapping(value = "/saveBoard")
+public String insertBoard(@RequestParam("file") MultipartFile files,BoardVO vo) throws IOException {
+try {
+	System.out.println("saveBoard 요청");
+        String origFilename = files.getOriginalFilename();
+        System.out.println("origFilename : " + origFilename);
+
+// 파일첨부를한경우에만
+if( origFilename != null&& !origFilename.equals(""))
+        {   	
+
+            String filename = new MD5Generator(origFilename).toString();
+/* 실행되는위치의 'files' 폴더에파일이저장됩니다. */
+            String savePath = System.getProperty("user.dir") + "\\files";
+/* 파일이저장되는폴더가없으면폴더를생성합니다. */
+if (!new File(savePath).exists()) {
+try{
+new File(savePath).mkdir();
+                }
+catch(Exception e){
+e.getStackTrace();
+                }
+            }
+            String filepath = savePath + "\\" + filename;
+            System.out.println("filepath : "+filepath);
+
+files.transferTo(new File(filepath));
+
+            FileVO fileVO = new FileVO();
+fileVO.setOrigFilename(origFilename);
+fileVO.setFilename(filename);
+fileVO.setFilepath(filepath);
+
+boardService.insertBoard(vo, fileVO);
+            System.out.println("파일첨부인경우");
+        }else {
+	boardService.insertBoard(vo, null);
+	System.out.println("파일첨부가아닌경우");
+        }
+    } catch(Exception e) {
+	System.out.println("파일업로드실패:" + e.getMessage());
+e.printStackTrace();
+    }
+	return"redirect:/board/getBoardList";
+}
